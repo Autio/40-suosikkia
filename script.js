@@ -403,6 +403,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function trackPlay(songTitle) {
-  fetch("https://eur3-suosikkia-9b4c6.cloudfunctions.net/trackPlay?song=" + encodeURIComponent(songTitle))
+  fetch("https://trackplay-2lz5scwsvq-uc.a.run.app" + encodeURIComponent(songTitle))
     .catch(() => {});
 } 
