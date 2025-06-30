@@ -403,6 +403,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function trackPlay(songTitle) {
-  fetch("https://trackplay-2lz5scwsvq-uc.a.run.app" + encodeURIComponent(songTitle))
-    .catch(() => {});
+  const url = "https://trackplay-2lz5scwsvq-uc.a.run.app?song=" + encodeURIComponent(songTitle);
+  console.log("trackPlay called for:", songTitle);
+  console.log("Fetching:", url);
+  fetch(url)
+    .then(response => {
+      console.log("trackPlay response status:", response.status);
+      return response.text();
+    })
+    .then(text => {
+      console.log("trackPlay response text:", text);
+    })
+    .catch(error => {
+      console.error("trackPlay fetch error:", error);
+    });
 } 
