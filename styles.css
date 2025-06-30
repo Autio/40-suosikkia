@@ -216,6 +216,7 @@ body {
 }
 
 .album-art {
+    position: relative;
     width: 240px;
     height: 240px;
     border-radius: 8px;
@@ -225,9 +226,30 @@ body {
 }
 
 .album-art img {
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     object-fit: cover;
+    transition: opacity 0.4s;
+    border-radius: 8px;
+}
+
+.album-art .album-front {
+    z-index: 1;
+    opacity: 1;
+}
+
+.album-art .album-back {
+    z-index: 2;
+    opacity: 0;
+}
+
+.album-art:hover .album-back {
+    opacity: 1;
+}
+
+.album-art:hover .album-front {
+    opacity: 0;
 }
 
 .track-info h2 {
@@ -450,6 +472,6 @@ body {
 @media (max-width: 600px) {
     .main-content { padding: 0.5rem; }
     .player-container, .gallery-container { padding: 0.5rem; }
-    .album-art { width: 60px; height: 60px; }
+    .album-art { width: 240px; height: 240px; }
     .cover-item img { max-width: 120px; }
 } 

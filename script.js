@@ -127,6 +127,10 @@ class RetroMusicPlayer {
             this.isPlaying = true;
             this.playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
             this.playPauseBtn.classList.add('playing');
+            // Track play event
+            const track = this.playlist[this.currentTrackIndex];
+            trackPlay(track.title);
+
         }).catch(error => {
             console.error('Error playing track:', error);
             this.showRetroError('Track not found! Check your file paths.');
@@ -396,4 +400,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 30);
         }
     }, 2000);
-}); 
+});
+
+function trackPlay(songTitle) {
+  fetch("https://eur3-suosikkia-9b4c6.cloudfunctions.net/trackPlay?song=" + encodeURIComponent(songTitle))
+    .catch(() => {});
+} 

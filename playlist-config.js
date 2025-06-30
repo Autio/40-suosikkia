@@ -108,7 +108,7 @@ const samplePlaylist = [
         duration: "1:54"
     },
     {
-        title: "Track 16 - Elokuuun kruunu",
+        title: "Track 16 - Elokuun kruunu",
         artist: "CMX (Cover)",
         file: "songs/Elokuun Kruunu.mp3",
         cover: "placeholder-cover.jpg",
@@ -229,7 +229,7 @@ const samplePlaylist = [
     {
         title: "Track 33 - Kui mind enaam ei ole",
         artist: "Urmas Alender (Cover)",
-        file: "songs/Kui mind enam ei ole.mp3",
+        file: "songs/Kui mind enaam ei ole.mp3",
         cover: "placeholder-cover.jpg",
         duration: "3:21"
     },
