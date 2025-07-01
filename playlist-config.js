@@ -182,7 +182,7 @@ const samplePlaylist = [
         artist: "Brian Hyland (Cover)",
         file: "songs/Sealed with a kiss.mp3",
         cover: "placeholder-cover.jpg",
-        duration: "2:50"
+        duration: "2:28"
     },
     {
         title: "Track 27 - I will wait for you",
@@ -229,7 +229,7 @@ const samplePlaylist = [
     {
         title: "Track 33 - Kui mind enaam ei ole",
         artist: "Urmas Alender (Cover)",
-        file: "songs/Kui mind enaam ei ole.mp3",
+        file: "songs/Kui mind enaam ei ole2.mp3",
         cover: "placeholder-cover.jpg",
         duration: "3:21"
     },

@@ -46,12 +46,12 @@
         <section id="player" class="content-section active">
             <div class="player-container">
                 <div class="now-playing">
-                    <div class="album-art">
+                    <div class="album-art" id="album-art">
                         <img id="album-front" src="album_cover.jpg" alt="Album Cover" class="album-front">
                         <img id="album-back" src="album_back.jpg" alt="Album Back Cover" class="album-back">
                     </div>
                     <div class="track-info">
-                        <h2 id="current-title">Select a track to start</h2>
+                        
                     </div>
                 </div>
                 
@@ -119,6 +119,12 @@
     <div id="image-modal" class="modal">
         <span class="close">&times;</span>
         <img class="modal-content" id="modal-img">
+    </div>
+
+    <!-- Modal for full-size album cover -->
+    <div id="album-modal" class="modal">
+        <span class="close" id="album-modal-close">&times;</span>
+        <img class="modal-content" id="album-modal-img">
     </div>
 
     <script src="playlist-config.js"></script>

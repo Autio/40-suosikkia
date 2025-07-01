@@ -368,6 +368,39 @@ document.addEventListener('DOMContentLoaded', () => {
             loadingScreen.remove();
         }, 500);
     }, 2000);
+
+    const albumArt = document.getElementById('album-art');
+    const albumFront = document.getElementById('album-front');
+    const albumBack = document.getElementById('album-back');
+    const albumModal = document.getElementById('album-modal');
+    const albumModalImg = document.getElementById('album-modal-img');
+    const albumModalClose = document.getElementById('album-modal-close');
+
+    function openAlbumModal() {
+        console.log("album cover clicked");
+        albumModalImg.src = 'album_cover_full.jpg';
+        albumModal.style.display = 'block';
+    }
+
+    if (albumArt && albumModal && albumModalImg && albumModalClose) {
+        albumArt.style.cursor = 'pointer';
+        if (albumFront) albumFront.addEventListener('click', openAlbumModal);
+        if (albumBack) albumBack.addEventListener('click', openAlbumModal);
+
+        albumModalClose.addEventListener('click', () => {
+            albumModal.style.display = 'none';
+        });
+        albumModal.addEventListener('click', (e) => {
+            if (e.target === albumModal) {
+                albumModal.style.display = 'none';
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && albumModal.style.display === 'block') {
+                albumModal.style.display = 'none';
+            }
+        });
+    }
 });
 
 // Add some additional retro effects
