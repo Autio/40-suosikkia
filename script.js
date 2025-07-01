@@ -13,6 +13,8 @@ class RetroMusicPlayer {
         this.currentTitle = document.getElementById('current-title');
         this.playlistContainer = document.getElementById('playlist');
         
+        console.log('Constructor - currentTitle element:', this.currentTitle); // Debug log
+        
         this.initializeEventListeners();
         this.loadPlaylist();
         this.setupNavigation();
@@ -22,7 +24,10 @@ class RetroMusicPlayer {
 
     initializeEventListeners() {
         // Audio player events
-        this.audioPlayer.addEventListener('ended', () => this.nextTrack());
+        this.audioPlayer.addEventListener('ended', () => {
+            console.log('Track ended, moving to next track'); // Debug log
+            this.nextTrack();
+        });
         this.audioPlayer.addEventListener('timeupdate', () => this.updateProgress());
         this.audioPlayer.addEventListener('loadedmetadata', () => this.updateDuration());
         
@@ -56,6 +61,7 @@ class RetroMusicPlayer {
                 ...track,
                 cover: 'covers/cover1.jpg'
             }));
+            console.log('Loaded sample playlist with', this.playlist.length, 'tracks'); // Debug log
         } else {
             // Fallback minimal playlist
             this.playlist = [
@@ -67,6 +73,7 @@ class RetroMusicPlayer {
                     duration: "3:00"
                 }
             ];
+            console.log('Using fallback playlist'); // Debug log
         }
         this.renderPlaylist();
         this.loadTrack(0);
@@ -101,9 +108,14 @@ class RetroMusicPlayer {
         this.currentTrackIndex = index;
         const track = this.playlist[index];
         
+        console.log('Loading track:', track.title); // Debug log
+        console.log('Current title element:', this.currentTitle); // Debug log
+        
         this.audioPlayer.src = track.file;
-        this.currentCover.src = 'album_cover.jpg';
+        // this.currentCover.src = 'album_cover.jpg';
         this.currentTitle.textContent = track.title;
+        
+        console.log('Set title to:', this.currentTitle.textContent); // Debug log
         
         // Update active playlist item
         document.querySelectorAll('.playlist-item').forEach((item, i) => {
@@ -147,13 +159,15 @@ class RetroMusicPlayer {
     nextTrack() {
         const nextIndex = (this.currentTrackIndex + 1) % this.playlist.length;
         this.loadTrack(nextIndex);
-        if (this.isPlaying) this.playTrack();
+        // Always play the track when moving to next/previous
+        this.playTrack();
     }
 
     previousTrack() {
         const prevIndex = this.currentTrackIndex === 0 ? this.playlist.length - 1 : this.currentTrackIndex - 1;
         this.loadTrack(prevIndex);
-        if (this.isPlaying) this.playTrack();
+        // Always play the track when moving to next/previous
+        this.playTrack();
     }
 
     updateProgress() {
